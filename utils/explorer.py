@@ -46,7 +46,7 @@ class Explorer:
         self.base_cost = np.full(fill_value=constants.NO_PARENT, shape=constants.MAP_SIZE)
         # Define video-writer of open-cv to record the exploration and final path
         video_format = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')
-        self.video_output = cv2.VideoWriter('exploration_' + self.method + '.avi', video_format, 200.0,
+        self.video_output = cv2.VideoWriter('exploration_' + self.method + '.mp4', video_format, 200.0,
                                             (constants.MAP_SIZE[1], constants.MAP_SIZE[0]))
 
     def get_heuristic_score(self, node: tuple) -> float:
@@ -137,7 +137,7 @@ class Explorer:
         # Iterate until we reach the initial node
         while self.parent[last_node[0]][last_node[1]] != constants.START_PARENT:
             # Search for parent node in the list of closed nodes
-            last_node = np.unravel_index(self.parent[last_node[0]][last_node[1]], dims=constants.MAP_SIZE)
+            last_node = np.unravel_index(self.parent[last_node[0]][last_node[1]], shape=constants.MAP_SIZE)
             path_list.append(last_node)
         # Return list containing all path nodes
         return path_list
