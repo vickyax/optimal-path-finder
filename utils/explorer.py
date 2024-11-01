@@ -45,7 +45,7 @@ class Explorer:
         # Define a 2-D array to store base cost of each node
         self.base_cost = np.full(fill_value=constants.NO_PARENT, shape=constants.MAP_SIZE)
         # Define video-writer of open-cv to record the exploration and final path
-        video_format = cv2.VideoWriter_fourcc('X', 'V', 'I', 'D')
+        video_format = cv2.VideoWriter_fourcc(*'X264')
         self.video_output = cv2.VideoWriter('exploration_' + self.method + '.mp4', video_format, 200.0,
                                             (constants.MAP_SIZE[1], constants.MAP_SIZE[0]))
 
